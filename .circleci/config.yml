@@ -1,6 +1,15 @@
 version: 2.1
 
 jobs:
+  build:
+    docker:
+      - image: cimg/python:3.11
+    steps:
+      - checkout
+      - run:
+          name: Run Python application
+          command: python main.py
+
   test:
     docker:
       - image: cimg/python:3.11
@@ -11,6 +20,9 @@ jobs:
           command: python -m unittest tests.py
 
 workflows:
-  test-workflow:
+  build_and_test:
     jobs:
-      - test
+      - build
+      - test:
+          requires:
+            - build

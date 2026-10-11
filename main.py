@@ -7,7 +7,6 @@ def say_hello(name):
 
 
 if __name__ == '__main__':
-    name = 'Tejaswin Badugu'
+    name = 'CircleCI'
     say_hello(name)
-    up = to_upper(name)
-    print(up)
+    print(to_upper(name))
